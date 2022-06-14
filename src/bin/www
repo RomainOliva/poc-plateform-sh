@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+// Load the Platform.sh configuration
+const config = require('platformsh-config').config();
+
 const http = require('http');
 const app = require('../app');
 
@@ -21,7 +24,7 @@ function normalizePort(val) {
 }
 
 // Get port from environment and store in Express.
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(config.port || '3000');
 app.set('port', port);
 
 // Create the HTTP server
